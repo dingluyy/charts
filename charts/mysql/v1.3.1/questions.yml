@@ -116,3 +116,9 @@ questions:
     description: "Set this to `true` to create ServiceMonitor for Prometheus operator"
     type: boolean
     label: Create MySQL ServiceMonitor for Prometheus Operator
+- variable: macvlan.enabled
+  default: false
+  description: "Enable mysql macvlan"
+  label: Enable MySQL Macvlan
+  type: macvlansubnet
+  group: "Macvlan Subnet"
