@@ -3,37 +3,123 @@ kind: StatefulSet
 metadata:
   annotations:
     field.cattle.io/creatorId: user-56c4l
-  creationTimestamp: "2021-05-18T01:33:29Z"
+  creationTimestamp: "2021-05-17T09:08:02Z"
   generation: 1
   labels:
     cattle.io/creator: norman
-    workload.user.cattle.io/workloadselector: statefulSet-default-test1
-  name: test1
+    workload.user.cattle.io/workloadselector: statefulSet-default-adad
+  managedFields:
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:field.cattle.io/creatorId: {}
+        f:labels:
+          .: {}
+          f:cattle.io/creator: {}
+          f:workload.user.cattle.io/workloadselector: {}
+      f:spec:
+        f:podManagementPolicy: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          f:matchLabels:
+            .: {}
+            f:workload.user.cattle.io/workloadselector: {}
+        f:serviceName: {}
+        f:template:
+          f:metadata:
+            f:annotations:
+              .: {}
+              f:cattle.io/timestamp: {}
+            f:labels:
+              .: {}
+              f:workload.user.cattle.io/workloadselector: {}
+          f:spec:
+            f:containers:
+              k:{"name":"adad"}:
+                .: {}
+                f:image: {}
+                f:imagePullPolicy: {}
+                f:name: {}
+                f:resources: {}
+                f:securityContext:
+                  .: {}
+                  f:allowPrivilegeEscalation: {}
+                  f:capabilities: {}
+                  f:privileged: {}
+                  f:readOnlyRootFilesystem: {}
+                  f:runAsNonRoot: {}
+                f:stdin: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+                f:tty: {}
+                f:volumeMounts:
+                  .: {}
+                  k:{"mountPath":"/tmp"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+            f:dnsPolicy: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:terminationGracePeriodSeconds: {}
+            f:volumes:
+              .: {}
+              k:{"name":"vol1"}:
+                .: {}
+                f:name: {}
+                f:persistentVolumeClaim:
+                  .: {}
+                  f:claimName: {}
+        f:updateStrategy:
+          f:type: {}
+    manager: rancher
+    operation: Update
+    time: "2021-05-17T09:08:02Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:collisionCount: {}
+        f:currentReplicas: {}
+        f:currentRevision: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:updateRevision: {}
+        f:updatedReplicas: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2021-05-18T01:22:50Z"
+  name: adad
   namespace: default
-  resourceVersion: "101512"
-  selfLink: /apis/apps/v1/namespaces/default/statefulsets/test1
-  uid: 0cc32874-b779-11eb-b51d-0a9d5ce8450c
+  resourceVersion: "60599"
+  selfLink: /apis/apps/v1/namespaces/default/statefulsets/adad
+  uid: e92c3d29-33cc-4f3c-b1f7-0df8de186316
 spec:
   podManagementPolicy: OrderedReady
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      workload.user.cattle.io/workloadselector: statefulSet-default-test1
-  serviceName: test1
+      workload.user.cattle.io/workloadselector: statefulSet-default-adad
+  serviceName: adad
   template:
     metadata:
       annotations:
-        cattle.io/timestamp: "2021-05-18T01:33:29Z"
-        field.cattle.io/excludeContainer: "false"
+        cattle.io/timestamp: "2021-05-17T09:08:02Z"
       creationTimestamp: null
       labels:
-        workload.user.cattle.io/workloadselector: statefulSet-default-test1
+        workload.user.cattle.io/workloadselector: statefulSet-default-adad
     spec:
       containers:
       - image: ubuntu:xenial
         imagePullPolicy: Always
-        name: test1
+        name: adad
         resources: {}
         securityContext:
           allowPrivilegeEscalation: false
@@ -45,19 +131,27 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         tty: true
+        volumeMounts:
+        - mountPath: /tmp
+          name: vol1
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
+      volumes:
+      - name: vol1
+        persistentVolumeClaim:
+          claimName: vol1-ss-0
   updateStrategy:
     type: RollingUpdate
 status:
   collisionCount: 0
   currentReplicas: 1
-  currentRevision: test1-7f56cbdb6f
+  currentRevision: adad-78c5ddc854
   observedGeneration: 1
   readyReplicas: 1
   replicas: 1
-  updateRevision: test1-7f56cbdb6f
+  updateRevision: adad-78c5ddc854
   updatedReplicas: 1
+
